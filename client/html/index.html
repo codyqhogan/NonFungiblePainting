@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Non-Fungible Paintings</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <!-- <img src="../images/nfp_counter.png" id="counter" /> -->
+    <img src="../images/nfp_logo.png" id="outside_logo" />
+    <div class="outside">
+      <div class="outside_frankie_container">
+        <img src="../images/frankie_lou.png" id="outside_frankie" />
+      </div>
+      <div class="outside_speaking_container">
+        <img src="../images/nfp_speakin.png" id="outside_speakin" />
+      </div>
+      <button id="sign_up_paper"></button>
+    </div>
+    <div class="paper_container">
+      <span class="exit_paper">X</span>
+      <div class="paper login">
+        <h2>Check-In</h2>
+        <form action="#">
+          <div class="input_box">
+            <label>Email: </label>
+            <input type="email" required />
+          </div>
+          <div class="input_box">
+            <label>Password: </label>
+            <input type="password" required />
+          </div>
+          <button
+            type="submit"
+            onclick="window.location.href='paintings.html'"
+            class="button"
+          >
+            Complete Check-In
+          </button>
+          <div class="not_member">
+            <p>Not a member? <a href="#" class="register_link">Register</a></p>
+          </div>
+        </form>
+      </div>
+      <div class="paper register">
+        <h2>New Applicant Form</h2>
+        <form action="#">
+          <div class="input_box">
+            <label>Full Name: </label>
+            <input type="text" required />
+          </div>
+          <div class="input_box">
+            <label>Email: </label>
+            <input type="email" required />
+          </div>
+          <div class="input_box">
+            <label>Password: </label>
+            <input type="password" required />
+          </div>
+          <div class="input_box">
+            <label>Confirm Password: </label>
+            <input type="password" required />
+          </div>
+          <button
+            type="submit"
+            onclick="window.location.href='lucky_cat.html'"
+            class="button"
+          >
+            Submit Application
+          </button>
+          <div class="already_member">
+            <p>Already a member? <a href="#" class="login_link">Login</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="../js/index.js"></script>
+  </body>
+</html>
