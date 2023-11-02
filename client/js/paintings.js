@@ -1,28 +1,35 @@
 const get_painting = document.querySelector("#lucky_paw");
 
 get_painting.addEventListener("click", function () {
+  let paint_string = "";
   let rarity = Math.floor(Math.random() * 100 + 1);
   let zones = 2;
   if (rarity < 40) {
     zones = 2;
     rarity = "common";
+    paint_string = paint_string + "C";
   } else if (rarity < 70 && rarity > 39) {
     zones = 4;
     rarity = "rare";
+    paint_string = paint_string + "R";
   } else if (rarity < 90 && rarity > 69) {
     zones = 9;
     rarity = "epic";
+    paint_string = paint_string + "E";
   } else if (rarity < 100 && rarity > 89) {
     zones = 13;
     rarity = "legendary";
+    paint_string = paint_string + "L";
   } else if (rarity === 100) {
     let metamorphosis = Math.floor(Math.random() * 10 + 1);
     if (metamorphosis < 7) {
       zones = 21;
       rarity = "question";
+      paint_string = paint_string + "Q";
     } else {
       zones = 25;
       rarity = "amalgam";
+      paint_string = paint_string + "A";
     }
   }
   let stars = Math.floor(Math.random() * 100 + 1);
@@ -56,6 +63,7 @@ get_painting.addEventListener("click", function () {
 
   console.log(rarity + ", " + stars + " star(s).");
   for (let index = 1; index <= zones; index++) {
+    paint_string = paint_string + index.toString(10);
     let zone_name = "." + rarity + "_" + index.toString(10);
     let zone = document.querySelector(zone_name);
     if (gradient_opts.includes(index)) {
@@ -71,32 +79,41 @@ get_painting.addEventListener("click", function () {
       }
       zone.style.setProperty("background-image", "");
       zone.style.setProperty("background-color", rgb_color);
+      paint_string = paint_string + rgb_color;
     } else {
       let direction = Math.floor(Math.random() * 8 + 1);
       switch (direction) {
         case 1:
           direction = "top";
+          paint_string = paint_string + "SD1";
           break;
         case 2:
           direction = "bottom";
+          paint_string = paint_string + "SD5";
           break;
         case 3:
           direction = "left";
+          paint_string = paint_string + "SD7";
           break;
         case 4:
           direction = "right";
+          paint_string = paint_string + "SD3";
           break;
         case 5:
           direction = "top right";
+          paint_string = paint_string + "SD2";
           break;
         case 6:
           direction = "top left";
+          paint_string = paint_string + "SD8";
           break;
         case 7:
           direction = "bottom right";
+          paint_string = paint_string + "SD4";
           break;
         case 8:
           direction = "bottom left";
+          paint_string = paint_string + "SD6";
           break;
       }
       let color_1 = "rgb(";
@@ -136,21 +153,9 @@ get_painting.addEventListener("click", function () {
           percent_2 +
           "%)",
       );
+      paint_string = paint_string + "A" + color_1 + "P" + percent_1 + "%";
+      paint_string = paint_string + "B" + color_2 + "P" + percent_2 + "%";
       zone.style.setProperty("background-color", "white");
-      //   console.log(
-      //   "background-image",
-      //   "linear-gradient(to " +
-      //     direction +
-      //     ", " +
-      //     color_1 +
-      //     " " +
-      //     percent_1 +
-      //     "%, " +
-      //     color_2 +
-      //     " " +
-      //     percent_2 +
-      //     "%)",
-      // );
     }
 
     if (rarity === "amalgam") {
@@ -162,7 +167,22 @@ get_painting.addEventListener("click", function () {
       zone.style.setProperty("grid-column-end", end_col.toString(10));
       zone.style.setProperty("grid-row-start", start_row.toString(10));
       zone.style.setProperty("grid-row-end", end_row.toString(10));
+      paint_string =
+        paint_string +
+        "c(" +
+        start_col.toString(10) +
+        "," +
+        end_col.toString(10) +
+        ")";
+      paint_string =
+        paint_string +
+        "r(" +
+        start_row.toString(10) +
+        "," +
+        end_row.toString(10) +
+        ")";
     }
     // CHECK IF PAINTING IS IN PAINTINGS TABLE, IF SO REPEAT PROCESS
+    console.log(paint_string);
   }
 });
