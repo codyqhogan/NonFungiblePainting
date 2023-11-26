@@ -6,12 +6,32 @@
     <title>Non-Fungible Paintings</title>
     <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body>
-    <div class="placeholder">
-      <img src="../images/nfp_rarity_banner.png" id="banner" />
-      <img src="../images/nfp_logo.png" id="logo" />
-      <img src="../images/nfp_checkout_arrow.png" id="arrow" />
-      <img src="../images/600px_frame.png" id="frame" />
+  <body
+    onload="display_paintings()"
+    style="
+      overflow: auto;
+      justify-content: center;
+      overflow-x: hidden;
+      backdrop-filter: none;
+    "
+  >
+    <a href="lucky_cat.html"
+      ><img
+        src="../images/nfp_shop_hanger.png"
+        id="arrow"
+        style="position: fixed; right: 40px; top: -50px; z-index: 99"
+    /></a>
+    <div class="gallery" style="display: grid">
+      <img
+        src="../images/nfp_logo.png"
+        id="logo"
+        style="justify-self: center; margin: 20px"
+      />
+      <hr style="height: 5px; width: 100%; background-color: black" />
+      <div
+        id="gallery_wall"
+        style="display: flex; flex-direction: column"
+      ></div>
     </div>
     <script src="../js/gallery.js"></script>
   </body>

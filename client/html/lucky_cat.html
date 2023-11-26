@@ -6,7 +6,7 @@
     <title>Non-Fungible Paintings</title>
     <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body>
+  <body onload="get_values()">
     <div class="lucky_cat_container">
       <div class="on_counter_lucky">
         <a id="arrow" href="gallery.html"
@@ -21,7 +21,7 @@
       </div>
       <div class="coin_info">
         <h2 id="coin_count">
-          1x<br />
+          <span id="num_coins"></span>x<br />
           Coins
         </h2>
         <img src="../images/nfp_coin.png" id="coins" />
@@ -29,7 +29,7 @@
     </div>
     <img src="../images/nfp_counter.png" id="counter" />
     <div class="painting_popup">
-      <div class="click_off_popup"></div>
+      <div class="click_off_popup close_painting"></div>
       <div class="common painting_container">
         <div class="common_1"></div>
         <div class="common_2"></div>

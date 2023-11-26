@@ -17,6 +17,7 @@ body.paintings_test_page {
 
 .button {
   cursor: pointer;
+  margin-top: 21px;
 }
 
 #counter {
@@ -43,7 +44,7 @@ body.paintings_test_page {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
-  width: 80vw;
+  width: 200vw;
   height: 65vh;
   margin-left: -8px;
   overflow: hidden;
@@ -98,17 +99,29 @@ body.paintings_test_page {
 }
 
 #register {
+  display: none;
+}
+
+#cash_register {
   max-width: 23vw;
   max-height: 30vh;
   margin-top: auto;
   margin-bottom: 5px;
 }
 
+#login {
+  display: initial;
+}
+
 #reciept {
+  cursor: pointer;
   max-width: 12vw;
   max-height: 13vh;
   margin-top: auto;
   margin-bottom: 5px;
+  background: url("./images/nfp_reciept.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 #frankie_inside {
@@ -128,9 +141,10 @@ body.paintings_test_page {
 
 .outside {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin-top: 40vh;
   height: 60vh;
+  width: 100vw;
 }
 
 .outside_frankie_container {
@@ -167,8 +181,22 @@ body.paintings_test_page {
   position: absolute;
   width: 100vw;
   height: 100vh;
+  z-index: -1;
+}
+
+.close_paper {
+  top: -6vh;
+  left: -25vw;
+}
+
+.close_painting {
   top: -8px;
   left: calc(-50vw + 292px);
+}
+
+.close_payment {
+  top: -7vh;
+  left: -17vw;
 }
 
 .painting_container {
@@ -193,6 +221,15 @@ body.paintings_test_page {
   gap: 2px;
   padding: 10px;
   transition: display 1s;
+}
+
+.painting_gallery {
+  width: 600px;
+  height: 600px;
+  background-color: grey;
+  background-image: url("./images/600px_frame.png");
+  margin: 20px;
+  padding: 10px;
 }
 
 .common {
@@ -820,14 +857,14 @@ body.paintings_test_page {
 
 .paper_container {
   position: absolute;
-  max-width: 90vw;
-  max-height: 90vh;
+  width: 50vw;
+  height: 60vh;
+  left: 25vw;
   justify-self: center;
   background: url("./images/papers.png");
   background-repeat: no-repeat;
   background-size: contain;
   border: none;
-  display: flex;
   justify-content: center;
   border: none;
   overflow: hidden;
@@ -857,47 +894,37 @@ body.paintings_test_page {
   justify-content: center;
   border: none;
   overflow: hidden;
-  transform: scale(1);
+  transform: blur(1);
+  margin-right: 5vw;
 }
 
 #sign_up_paper.paper_open {
-  transform: scale(0);
-  transition-delay: 1s;
+  filter: blur(10px);
+  transition: filter 1s;
 }
 
 body.paper_open {
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
   transition: backdrop-filter 1s;
 }
 
 #outside_logo.paper_open {
-  filter: blur(20px);
+  filter: blur(10px);
   transition: filter 1s;
 }
 
 .outside_speaking_container.paper_open {
-  filter: blur(20px);
+  filter: blur(10px);
   transition: filter 1s;
 }
 
 .outside_frankie_container.paper_open {
-  filter: blur(20px);
+  filter: blur(10px);
   transition: filter 1s;
 }
 
 .paper_container .paper.register {
   position: relative;
-  transform: translateX(-800px);
-}
-
-.paper_container.on_register .paper.login {
-  transform: translateX(-800px);
-}
-
-.paper_container.on_register .paper.register {
-  position: absolute;
-  transform: translateX(0px);
-  margin-left: 200px;
 }
 
 .paper_container .exit_paper {
@@ -917,6 +944,104 @@ body.paper_open {
   cursor: pointer;
 }
 
+.modal {
+  z-index: 1;
+  width: 100vw;
+}
+
+.payment_options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  width: 100%;
+}
+
+.payment_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+.payment_container {
+  position: absolute;
+  width: 70vw;
+  height: 75vh;
+  background-color: white;
+  background-repeat: no-repeat;
+  justify-content: center;
+  border: solid black 7px;
+  border-radius: 50px;
+  display: flex;
+  left: 15vw;
+  justify-content: center;
+  transform: translateY(500vh);
+  transition: transform 1s;
+  min-height: fit-content;
+  max-height: 70vw;
+}
+
+.payment_container.payment_open {
+  transform: translateY(5vh);
+  transition: transform 1s;
+}
+
+body.payment_open {
+  backdrop-filter: blur(10px);
+  transition: backdrop-filter 1s;
+}
+
+#arrow.payment_open {
+  filter: blur(10px);
+  transition: filter 1s;
+}
+
+#outside_floor.paper_open {
+  filter: blur(10px);
+  transition: filter 1s;
+}
+
+#cash_register.payment_open {
+  filter: blur(10px);
+  transition: filter 1s;
+}
+
+#counter.payment_open {
+  filter: blur(10px);
+  transition: filter 1s;
+}
+
+#reciept.payment_open {
+  filter: blur(10px);
+  transition: filter 1s;
+}
+
+.purchase {
+  aspect-ratio: 1 / 1;
+  max-height: 28vh;
+  max-width: 40vh;
+  margin-right: 5vw;
+  margin-left: 5vw;
+}
+
+.purchase_image {
+  aspect-ratio: 1 / 1;
+  max-width: 100%;
+}
+
+#outside_floor {
+  margin-top: 70vh;
+  margin-bottom: 0px;
+  margin-left: -100px;
+  height: 30vh;
+  min-width: 120vw;
+  position: absolute;
+  z-index: -1;
+}
+
 .paper h2 {
   cursor: default;
   font-size: 2em;
@@ -926,9 +1051,9 @@ body.paper_open {
 
 .input_box {
   position: relative;
-  height: 31px;
   border: none;
   width: 100%;
+  margin: 6px;
 }
 
 .input_box label {
@@ -939,4 +1064,30 @@ body.paper_open {
   background: transparent;
   border: none;
   border-bottom: 2px solid black;
+}
+
+#more_coins {
+  align-self: center;
+  margin: 0;
+  margin-top: 5vh;
+  font-size: min(6vw, 6vh);
+}
+
+.purchase_info {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-content: center;
+}
+
+#purchase_font {
+  font-size: min(1.6vw, 1.6vh);
+  align-self: center;
+}
+
+#price_font {
+  font-size: min(3vw, 6vh);
+  align-self: center;
+  margin: 0;
 }

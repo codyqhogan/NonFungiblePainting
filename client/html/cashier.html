@@ -6,22 +6,57 @@
     <title>Non-Fungible Paintings</title>
     <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body>
+  <body onload="get_values()">
     <div class="on_counter_cash">
-      <img src="../images/nfp_gallery_arrow.png" id="arrow" />
-
-      <img src="../images/nfp_cashregister.png" id="register" />
-      <img src="../images/frankie_lou.png" id="frankie_inside" />
-      <img src="../images/nfp_reciept.png" id="reciept" />
+      <a id="arrow" href="lucky_cat.html"
+        ><img src="../images/nfp_cat_arrow.png" id="arrow"
+      /></a>
+      <img src="../images/nfp_cashregister.png" id="cash_register" />
+      <!-- <img src="../images/frankie_lou.png" id="frankie_inside" /> -->
+      <a id="reciept"><img src="../images/nfp_reciept.png" id="reciept" /></a>
     </div>
     <div class="coin_info">
       <h2 id="coin_count">
-        1x<br />
+        <span id="num_coins"></span>x<br />
         Coins
       </h2>
       <img src="../images/nfp_coin.png" id="coins" />
     </div>
     <img src="../images/nfp_counter.png" id="counter" />
+    <div class="payment_container">
+      <div class="click_off_popup close_payment"></div>
+      <div class="modal payment" style="display: grid; justify-content: center">
+        <div class="payment_options">
+          <h2 id="more_coins">Get More Coins!</h2>
+          <div class="payment_buttons">
+            <div class="purchase_info">
+              <button id="one_coin" class="purchase" onclick="one_coin()">
+                <img src="../images/nfp_coin.png" class="purchase_image" />
+              </button>
+              <h2 id="purchase_font">Mini Coin Bundle!</h2>
+              <h2 id="price_font" style="color: red">1x Coin</h2>
+              <h2 id="price_font" style="color: rgb(37, 134, 172)">$0.99</h2>
+            </div>
+            <div class="purchase_info">
+              <button id="some_coin" class="purchase" onclick="some_coin()">
+                <img src="../images/nfp_coins.png" class="purchase_image" />
+              </button>
+              <h2 id="purchase_font">Mega Coin Bundle!</h2>
+              <h2 id="price_font" style="color: red">10x Coins</h2>
+              <h2 id="price_font" style="color: rgb(37, 134, 172)">$5.99</h2>
+            </div>
+            <div class="purchase_info">
+              <button id="lotsa_coin" class="purchase" onclick="lotsa_coin()">
+                <img src="../images/nfp_coins_max.png" class="purchase_image" />
+              </button>
+              <h2 id="purchase_font">Giant Coin Bundle!</h2>
+              <h2 id="price_font" style="color: red">50x Coins</h2>
+              <h2 id="price_font" style="color: rgb(37, 134, 172)">$19.99</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="../js/cashier.js"></script>
   </body>
 </html>

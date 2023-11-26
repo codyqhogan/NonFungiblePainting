@@ -7,6 +7,26 @@ const epic = document.querySelector(".epic");
 const legendary = document.querySelector(".legendary");
 const question = document.querySelector(".question");
 const amalgam = document.querySelector(".amalgam");
+const num_coins = document.getElementById("num_coins");
+
+function get_values() {
+  //will perform necessary queries and assign initial variables
+  try {
+    sessionID = sessionStorage.getItem("nfp_sessionSTR_uniq");
+    if (sessionID == null) {
+      alert(
+        "No Account Logged In!\nClick OK to return to the Home Page and Login.",
+      );
+      window.location.href = "index.html";
+    }
+  } catch (e) {
+    alert(
+      "No Account Logged In!\nClick OK to return to the Home Page and Login.",
+    );
+    window.location.href = "index.html";
+  }
+  num_coins.innerHTML = 5;
+}
 
 lucky_cat.addEventListener("mouseout", function () {
   document.getElementById("lucky_cat_img").src = "../images/nfp_lucky_eyes.png";
@@ -17,6 +37,14 @@ lucky_cat.addEventListener("mouseover", function () {
 });
 
 lucky_cat.addEventListener("click", function () {
+  if (num_coins.innerHTML != 0) {
+    num_coins.innerHTML = num_coins.innerHTML - 1;
+    //update the database with new coin value
+  } else {
+    alert("OUT OF COINS!!!\nClick OK to proceed to the Store and BUY MORE!");
+    window.location.href = "cashier.html";
+    return 0;
+  }
   let paint_string = "";
   let rarity = Math.floor(Math.random() * 100 + 1);
   let zones = 2;
@@ -76,10 +104,10 @@ lucky_cat.addEventListener("click", function () {
       gradient_opts.splice(pick - 1, 1);
     }
   }
-
-  console.log(rarity + ", " + stars + " star(s).");
+  paint_string += stars.toString(10);
+  //console.log(rarity + ", " + stars + " star(s).");
   for (let index = 1; index <= zones; index++) {
-    paint_string = paint_string + index.toString(10);
+    paint_string = paint_string + index.toString(10) + ":";
     let zone_name = "." + rarity + "_" + index.toString(10);
     let zone = document.querySelector(zone_name);
     if (gradient_opts.includes(index)) {
@@ -245,7 +273,7 @@ lucky_cat.addEventListener("click", function () {
     case "amalgam":
       common.style.display = "none";
       rare.style.display = "none";
-      epic.style.display = "none";
+      epic.style.displGay = "none";
       legendary.style.display = "none";
       question.style.display = "none";
       amalgam.style.display = "grid";
@@ -254,7 +282,7 @@ lucky_cat.addEventListener("click", function () {
     default:
       break;
   }
-  console.log(paint_string);
+  //console.log(paint_string);
 });
 
 close_popup.addEventListener("click", function () {

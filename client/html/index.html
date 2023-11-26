@@ -6,75 +6,70 @@
     <title>Non-Fungible Paintings</title>
     <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body>
+  <body style="background: url(../images/brick_wall.png)">
     <!-- <img src="../images/nfp_counter.png" id="counter" /> -->
     <img src="../images/nfp_logo.png" id="outside_logo" />
     <div class="outside">
-      <div class="outside_frankie_container">
-        <img src="../images/frankie_lou.png" id="outside_frankie" />
-      </div>
-      <div class="outside_speaking_container">
-        <img src="../images/nfp_speakin.png" id="outside_speakin" />
+      <div class="cat_outside" style="display: flex">
+        <div class="outside_frankie_container">
+          <img src="../images/frankie_lou.png" id="outside_frankie" />
+        </div>
+        <div class="outside_speaking_container">
+          <img src="../images/nfp_speakin.png" id="outside_speakin" />
+        </div>
       </div>
       <button id="sign_up_paper"></button>
     </div>
     <div class="paper_container">
-      <span class="exit_paper">X</span>
-      <div class="paper login">
+      <div id="login" class="paper login">
         <h2>Check-In</h2>
         <form action="#">
           <div class="input_box">
             <label>Email: </label>
-            <input type="email" required />
+            <input type="email" required id="email_l" />
           </div>
           <div class="input_box">
             <label>Password: </label>
-            <input type="password" required />
+            <input type="password" required id="passwd_l" />
           </div>
-          <button
-            type="submit"
-            onclick="window.location.href='paintings.html'"
-            class="button"
-          >
+          <button type="submit" class="button" id="login_button">
             Complete Check-In
           </button>
-          <div class="not_member">
+          <div class="not_member" style="margin-top: 33px">
             <p>Not a member? <a href="#" class="register_link">Register</a></p>
           </div>
         </form>
       </div>
-      <div class="paper register">
-        <h2>New Applicant Form</h2>
+      <div id="register" class="paper register">
+        <h3>New Applicant Form</h3>
         <form action="#">
           <div class="input_box">
             <label>Full Name: </label>
-            <input type="text" required />
+            <input type="text" id="name" required />
           </div>
           <div class="input_box">
             <label>Email: </label>
-            <input type="email" required />
+            <input type="email" id="email_r" required />
           </div>
           <div class="input_box">
             <label>Password: </label>
-            <input type="password" required />
+            <input type="password" id="passwd_r" required />
           </div>
           <div class="input_box">
             <label>Confirm Password: </label>
             <input type="password" required />
           </div>
-          <button
-            type="submit"
-            onclick="window.location.href='lucky_cat.html'"
-            class="button"
-          >
+          <button type="submit" class="button" id="register_button">
             Submit Application
           </button>
-          <div class="already_member">
+          <div class="already_member" style="margin-top: 32px">
             <p>Already a member? <a href="#" class="login_link">Login</a></p>
           </div>
         </form>
       </div>
+      <div class="click_off_popup close_paper"></div>
     </div>
+    <img src="../images/concrete.png" id="outside_floor" />
     <script src="../js/index.js"></script>
   </body>
 </html>
